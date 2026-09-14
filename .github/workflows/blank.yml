@@ -14,13 +14,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup git ...
-        run: | 
-          apt-get install git
-          git config user.name "Interreto"
-          git config user.email "interreto@seznam.cz"
-      - name: Clone ...
-        run: git clone git@github.com:interreto/do-it-again.git .
+      - uses: actions/checkout@v4
       - name: Change README.md
         run: | 
           n=$(grep -oP '\*\K\d+(?=\*)' README.md)
@@ -28,6 +22,8 @@ jobs:
           sed -i "s/\*${n}\*/\*${new_n}\*/" README.md
       - name: Commit changes
         run: |
+          git config user.name "Interreto"
+          git config user.email "interreto@seznam.cz"
           git add README.md
           if git diff --cached --quiet; then
             echo "README.md is already up to date."
