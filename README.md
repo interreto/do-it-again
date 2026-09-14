@@ -2,5 +2,5 @@
 
 The poof of GitHub Action issue
 ```
-This file was changed *{n}* times by GitHub Action
+This file was changed *0* times by GitHub Action
 ```
